@@ -1,11 +1,12 @@
 // Client for API.Bible (https://docs.api.bible), used for copyrighted versions
-// such as the NIV that cannot be bundled with the site. Server-only: the API
-// key must never reach the browser.
+// such as the NIV and NASB that cannot be bundled with the site. Server-only:
+// the API key must never reach the browser.
 //
-// Required environment variables:
-//   API_BIBLE_KEY     your API.Bible key
-//   API_BIBLE_NIV_ID  the NIV bibleId your key has access to (list them with
-//                     GET https://rest.api.bible/v1/bibles)
+// Environment variables (a version is unavailable until its ID is set):
+//   API_BIBLE_KEY      your API.Bible key
+//   API_BIBLE_NIV_ID   the NIV bibleId your key has access to
+//   API_BIBLE_NASB_ID  the NASB bibleId (1995 or 2020 edition)
+// List the bibleIds your key can use with GET https://rest.api.bible/v1/bibles.
 import { cacheLife } from "next/cache";
 import type { Verse } from "./index";
 
@@ -13,6 +14,7 @@ const BASE_URL = "https://rest.api.bible/v1";
 
 const BIBLE_ID_ENV = {
   niv: "API_BIBLE_NIV_ID",
+  nasb: "API_BIBLE_NASB_ID",
 } as const;
 
 export type ApiBibleVersion = keyof typeof BIBLE_ID_ENV;
