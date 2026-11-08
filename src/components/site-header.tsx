@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LoginPanel } from "./login-panel";
 
 const navItems = [
   { label: "Live Stream", href: "#" },
@@ -32,12 +33,7 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <Link
-            href="/login"
-            className="rounded bg-brand px-4 py-2 font-heading text-sm font-semibold text-white hover:bg-brand-dark"
-          >
-            Login
-          </Link>
+          <LoginPanel />
         </div>
       </div>
     </header>
